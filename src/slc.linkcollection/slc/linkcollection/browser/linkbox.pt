@@ -1,0 +1,8 @@
+<div id="slc-linkcollection-linkbox">
+  <ul id="slc-linkcollection-list">
+    <li tal:repeat="link view/links">
+        <a tal:content="link/title" 
+           tal:attributes="href link/url" />
+    </li>
+ </ul>
+</div>

@@ -1,0 +1,6 @@
+#slc-linkcollection-list li a:click {
+    evt-click-preventdefault: True;
+
+    action-server: kssLinkCollectionLoad;
+    kssLinkCollectionLoad-url: nodeAttr('href');
+}

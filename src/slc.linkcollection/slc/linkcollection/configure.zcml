@@ -1,0 +1,69 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="slc.linkcollection">
+
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <include package="plone.browserlayer" />
+    <include package="plone.app.z3cform" />
+    <include package="zope.annotation" />
+    
+    <browser:resource
+        name="linkcollection.kss"
+        file="browser/linkcollection.kss"
+        />
+
+    <class class=".browser.linkbox_edit.LinkList">
+        <require
+            permission="cmf.ModifyPortalContent"
+            interface=".interfaces.ILinkList"
+            set_schema=".interfaces.ILinkList"
+            />
+     </class>
+
+     <adapter
+         factory=".browser.linkbox_edit.linklist_adapter"
+         />
+
+
+    <class class="Products.ATContentTypes.interface.IATDocument">
+        <implements interface="zope.annotation.interfaces.IAnnotatable" />
+    </class>
+    
+
+    <browser:page
+        for="*"
+        name="linkcollection-edit"
+        class=".browser.linkbox_edit.LinkCollectionView"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        for="*"
+        name="kssLinkCollectionLoad"
+        class=".browser.kssLinkCollectionLoad.LinkCollectionLoad"
+        permission="zope2.View"
+    />
+
+    <browser:viewlet
+        name="slc.linkcollection.linkbox"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class=".browser.viewlets.LinkBoxViewlet"
+        layer=".interfaces.ILinkCollectionLayer"
+        permission="zope2.View" 
+        />
+
+
+    <genericsetup:registerProfile
+          name="default"
+          title="SLC LinkCollection"
+          directory="profiles/default"
+          description='Extension profile for the LinkCollection viewlet'
+          provides="Products.GenericSetup.interfaces.EXTENSION"
+          />
+
+
+</configure>
