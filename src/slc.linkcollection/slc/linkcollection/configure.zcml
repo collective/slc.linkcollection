@@ -8,7 +8,7 @@
     <five:registerPackage package="." initialize=".initialize" />
 
     <include package="plone.browserlayer" />
-    <include package="plone.app.z3cform" />
+    <!--include package="plone.z3cform" /-->
     <include package="zope.annotation" />
     
     <browser:resource
@@ -24,7 +24,7 @@
             />
      </class>
 
-     <adapter
+    <adapter
          factory=".browser.linkbox_edit.linklist_adapter"
          />
 
@@ -52,10 +52,10 @@
         name="slc.linkcollection.linkbox"
         manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
         class=".browser.viewlets.LinkBoxViewlet"
-        layer=".interfaces.ILinkCollectionLayer"
         permission="zope2.View" 
         />
-
+<!--         layer=".interfaces.ILinkCollectionLayer"
+-->
 
     <genericsetup:registerProfile
           name="default"
