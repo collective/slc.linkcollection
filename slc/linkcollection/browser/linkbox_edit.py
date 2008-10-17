@@ -1,29 +1,64 @@
 from zope import interface, schema, component
-from z3c.form import form, field, button
-from plone.app.z3cform.layout import wrap_form
+#from z3c.form import form, field, button
+#from plone.z3cform.layout import wrap_form
+from zope.formlib import form
+from DateTime import DateTime
+from zope.interface.common import idatetime
 from persistent import Persistent
 from zope.annotation.interfaces import IAnnotations, IAttributeAnnotatable, IAnnotatable
 from slc.linkcollection.interfaces import ILinkList
 from Products.ATContentTypes.interface import IATDocument
 from zope.annotation import factory
 
+from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget, UberMultiSelectionWidget
+from plone.app.vocabularies.catalog import SearchableTextSourceBinder
+
+from zope.interface import Interface, implements
+from zope.component import adapts
+from zope.app.form import CustomWidgetFactory
+from slc.linkcollection import LinkCollectionMessageFactory as _
+from Products.CMFCore.utils import getToolByName
+from zope.app.component.hooks import getSite
+
 class LinkList(Persistent):
-    interface.implements(ILinkList)
-    component.adapts(IATDocument)
-    urls = u""
+    implements(ILinkList)
+    adapts(IATDocument)
+
+        
+    @property
+    def portal_catalog(self):        
+        """ make the adapter penetratable for the vocabulary to find the cat"""
+        return getToolByName(getSite(), 'portal_catalog')
+    @property
+    def portal_url(self):        
+        """ make the adapter penetratable for the vocabulary to find the cat"""
+        return getToolByName(getSite(), 'portal_url')
+
+        
+    urls = []
     
 linklist_adapter = factory(LinkList)
 
-    
-class LinkCollectionForm(form.Form):
-    fields = field.Fields(ILinkList)
-    label = u"Add Content Objects to point to"
 
-    @button.buttonAndHandler(u'Apply')
-    def handleApply(self, action):
-        data, errors = self.extractData()
+
+class LinkCollectionForm(form.PageEditForm):
+
+    form_fields = form.Fields(ILinkList)
+    label = u"Add Content Objects to point to"
+    form_fields['urls'].custom_widget = UberMultiSelectionWidget
+    
+
+
+    @form.action(_("Apply"))
+    def handle_edit_action(self, action, data):
         ILinkList(self.context).urls = data['urls']
 
+        
+        status = _("Updated on ${date_time}",
+                   mapping={'date_time': DateTime()}
+                   )
+        self.status = status
 
 
-LinkCollectionView = wrap_form(LinkCollectionForm, label="Link Collection Form")
+
+LinkCollectionView = LinkCollectionForm

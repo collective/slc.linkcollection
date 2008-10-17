@@ -1,4 +1,5 @@
 <div id="slc-linkcollection-linkbox">
+<a href="@@linkcollection-edit">edit</a>
   <ul id="slc-linkcollection-list">
     <li tal:repeat="link view/links">
         <a tal:content="link/title" 

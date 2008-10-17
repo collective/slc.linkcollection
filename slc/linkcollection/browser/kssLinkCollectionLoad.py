@@ -18,7 +18,7 @@ class LinkCollectionLoad(BrowserView):
         if item is None:
             bodytext = u'No document has been found at this URL: %s' % url
         else:
-            bodytext = item.getText()
+            bodytext = unicode(item.getText(), 'utf-8')
         core = getKSSCommandSet('core')
-        core.replaceInnerHTML('#parent-fieldname-text', str(bodytext))
+        core.replaceInnerHTML('#parent-fieldname-text', bodytext)
         return renderKSSCommands()
