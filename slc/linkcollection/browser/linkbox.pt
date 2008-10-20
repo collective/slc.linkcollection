@@ -1,8 +1,15 @@
-<div id="slc-linkcollection-linkbox">
+<div id="slc-linkcollection-linkbox"
+     tal:condition="view/show">
 
-    <div id="söc-linkcollection-editbox">
+    <div id="slc-linkcollection-editbox">
         <a onclick="javascript:window.open('@@linkcollection-edit','linkcollection','dependent=yes, status=yes, width=500, height=400, screenX=200, screenY=200, titlebar=no');;return false;" href="">
+            <img title="edit link collection" 
+                 alt="edit link collection" 
+                 src="++resource++linkcollection_edit_box.gif">
+                 edit link collection
+            
         </a>
+
     </div>
   <ul id="slc-linkcollection-list">
     <li tal:repeat="link view/links" class="linkList">
@@ -11,4 +18,5 @@
                            id link/url" />
     </li>
  </ul>
+ <div class="visualClear"></div>
 </div>

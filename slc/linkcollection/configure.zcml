@@ -15,7 +15,11 @@
         name="linkcollection.css" 
         file="browser/linkcollection.css" 
         /> 
-    
+
+    <browser:resource 
+        name="linkcollection_edit_box.gif" 
+        image="browser/edit_box.gif" 
+        /> 
     
     <browser:resource
         name="linkcollection.kss"

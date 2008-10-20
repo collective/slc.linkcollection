@@ -10,6 +10,10 @@ class LinkBoxViewlet(common.ViewletBase):
 
     render = ViewPageTemplateFile('linkbox.pt')
     
+    def show(self):
+        user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
+        return user.has_permission('Modify portal content', self.context) or self.links()
+        
     def raw(self):
         if not IATDocument.providedBy(self.context):
             return []
