@@ -1,9 +1,14 @@
 <div id="slc-linkcollection-linkbox">
-<a href="@@linkcollection-edit">edit</a>
+
+    <div id="söc-linkcollection-editbox">
+        <a onclick="javascript:window.open('@@linkcollection-edit','linkcollection','dependent=yes, status=yes, width=500, height=400, screenX=200, screenY=200, titlebar=no');;return false;" href="">
+        </a>
+    </div>
   <ul id="slc-linkcollection-list">
-    <li tal:repeat="link view/links">
+    <li tal:repeat="link view/links" class="linkList">
         <a tal:content="link/title" 
-           tal:attributes="href link/url" />
+           tal:attributes="href string:${here/portal_url}/${link/url};
+                           id link/url" />
     </li>
  </ul>
 </div>

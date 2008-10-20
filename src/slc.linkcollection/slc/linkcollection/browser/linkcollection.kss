@@ -2,5 +2,5 @@
     evt-click-preventdefault: True;
 
     action-server: kssLinkCollectionLoad;
-    kssLinkCollectionLoad-url: nodeAttr('href');
+    kssLinkCollectionLoad-url: nodeAttr('id');
 }
