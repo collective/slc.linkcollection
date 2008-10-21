@@ -26,4 +26,6 @@ class LinkCollectionLoad(BrowserView):
                       %s""" % (title, description, bodytext)
         core = getKSSCommandSet('core')
         core.replaceInnerHTML('#parent-fieldname-text', text)
+        selector = core.getHtmlIdSelector('#parent-fieldname-text')
+        core.addClass(selector, 'current-linklist-item')
         return renderKSSCommands()

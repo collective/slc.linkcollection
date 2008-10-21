@@ -8,3 +8,6 @@
 #slc-linkcollection-editbox {
     padding: 3px; float: right;
 }
+.current-linklist-item {
+    font-weight: bold;
+}
