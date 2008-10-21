@@ -2,12 +2,11 @@
      tal:condition="view/show">
 
     <div id="slc-linkcollection-editbox">
-        <a onclick="javascript:window.open('@@linkcollection-edit','linkcollection','dependent=yes, status=yes, width=500, height=400, screenX=200, screenY=200, titlebar=no');;return false;" href="">
+        <a tal:attributes="href string:${here/absolute_url}/@@linkcollection-edit">
             <img title="edit link collection" 
                  alt="edit link collection" 
                  src="++resource++linkcollection_edit_box.gif">
-                 edit link collection
-            
+                 edit link collection            
         </a>
 
     </div>
