@@ -10,6 +10,12 @@ class LinkBoxViewlet(common.ViewletBase):
 
     render = ViewPageTemplateFile('linkbox.pt')
     
+    def showeditbox(self):
+        user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
+        if user.has_permission('Modify portal content', self.context):
+            return True
+        return False
+    
     def show(self):
         user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
         if not IATDocument.providedBy(self.context):
@@ -20,6 +26,9 @@ class LinkBoxViewlet(common.ViewletBase):
             return True
         return False
             
+    def name_item(self, link):
+        idx = self.links().index(link)
+        return 'linklist-item-%s' % idx
         
     def raw(self):
         if not IATDocument.providedBy(self.context):
