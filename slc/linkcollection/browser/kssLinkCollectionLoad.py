@@ -16,9 +16,14 @@ class LinkCollectionLoad(BrowserView):
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         item = portal.restrictedTraverse(url, None)
         if item is None:
-            bodytext = u'No document has been found at this URL: %s' % url
+            text = u'No document has been found at this URL: %s' % url
         else:
+            title = unicode(item.Title(), 'utf-8')
+            description = unicode(item.Description(), 'utf-8')
             bodytext = unicode(item.getText(), 'utf-8')
+            text = """<h1 class="documentFirstHeading">%s</h1>
+                      <div class="documentDescription">%s</div>
+                      %s""" % (title, description, bodytext)
         core = getKSSCommandSet('core')
-        core.replaceInnerHTML('#parent-fieldname-text', bodytext)
+        core.replaceInnerHTML('#parent-fieldname-text', text)
         return renderKSSCommands()
