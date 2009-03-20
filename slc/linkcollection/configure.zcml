@@ -21,11 +21,6 @@
         image="browser/edit_box.gif" 
         /> 
     
-    <browser:resource
-        name="linkcollection.kss"
-        file="browser/linkcollection.kss"
-        />
-
     <class class=".browser.linkbox_edit.LinkList">
         <require
             permission="cmf.ModifyPortalContent"
