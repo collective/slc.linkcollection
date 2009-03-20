@@ -1,10 +1,13 @@
+from zope.app.component.hooks import getSite
+
+from Products.ATContentTypes.interface.document import IATDocument
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 from plone.app.layout.viewlets import common
+
 from slc.linkcollection.interfaces import ILinkList
 from types import *
-from Products.CMFCore.utils import getToolByName
-from zope.app.component.hooks import getSite
-from Products.ATContentTypes.interface.document import IATDocument
 
 class LinkBoxViewlet(common.ViewletBase):
 
@@ -52,6 +55,33 @@ class LinkBoxViewlet(common.ViewletBase):
             ob = portal.restrictedTraverse(url, None)
             
             if ob is not None:
-                maps.append(dict(title=ob.Title(), url=url))
+                maps.append(dict(title=ob.Title(), url=url, uid=ob.UID()))
                 
         return maps
+
+    def docs(self, links=None):
+        """ Return the Pages (IATDocument) being linked to.
+        """
+        docs = []
+        links = links or self.links()
+        portal = getToolByName(self.context, 'portal_url').getPortalObject()
+        for link in links:
+            docs.append(portal.restrictedTraverse(link['url'], None))
+        return docs
+
+    def docbody(self, doc):
+        """ Return the document's contents as html
+        """
+        title = unicode(doc.Title(), 'utf-8')
+        description = unicode(doc.Description(), 'utf-8')
+        bodytext = unicode(doc.getText(), 'utf-8')
+        text = """<h1 class="documentFirstHeading">%s</h1>
+                  <div class="documentDescription">%s</div>%s
+                """ % (title, description, bodytext)
+        return text
+        
+        
+
+
+        
+
