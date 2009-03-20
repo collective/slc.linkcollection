@@ -60,12 +60,15 @@
 
     <browser:viewlet
         name="slc.linkcollection.linkbox"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
         class=".browser.viewlets.LinkBoxViewlet"
         permission="zope2.View" 
         />
-<!--         layer=".interfaces.ILinkCollectionLayer"
--->
+
+    <browser:resource 
+        name="linkcollection.js"
+        file="browser/linkcollection.js"
+        />
 
     <genericsetup:registerProfile
           name="default"
