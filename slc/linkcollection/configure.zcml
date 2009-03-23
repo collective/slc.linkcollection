@@ -46,13 +46,6 @@
         permission="cmf.ModifyPortalContent"
     />
 
-    <browser:page
-        for="*"
-        name="kssLinkCollectionLoad"
-        class=".browser.kssLinkCollectionLoad.LinkCollectionLoad"
-        permission="zope2.View"
-    />
-
     <browser:viewlet
         name="slc.linkcollection.linkbox"
         manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
