@@ -5,6 +5,7 @@ from zope.app.component.hooks import getSite
 from zope.interface import Interface
 
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder, SearchableTextSource
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 from Products.ATContentTypes.interface import IATDocument
 from Products.CMFCore.utils import getToolByName
@@ -17,13 +18,17 @@ class LocalSearchableTextSourceBinder(SearchableTextSourceBinder):
     """ make the binder search in the local folder first """
 
     def __call__(self, context):
+        # commented out:
+        # if IATDocument.implementedBy(context.__class__)
+        # as context.__class__ is always slc.linkcollection.browser.linkbox_edit.LinkList (fuchs)
         portal_url = getToolByName(context, 'portal_url', None)
-        if IATDocument.implementedBy(context.__class__):
-            parent = context.REQUEST.PARENTS[1]
+        site = getSite()
+        if IPloneSiteRoot.providedBy(site):
+            current_path = '/'+'/'.join(portal_url.getRelativeContentPath(site.REQUEST.PARENTS[1]))
+            self.default_query = 'path:%s' % current_path
         else:
-            parent = getSite()
-        current_path = '/'+'/'.join(portal_url.getRelativeContentPath(parent))
-        self.default_query = 'path:%s' % current_path
+            self.default_query = 'path:'
+
         return SearchableTextSource(context, base_query=self.query.copy(),
                                     default_query=self.default_query)    
                                     
