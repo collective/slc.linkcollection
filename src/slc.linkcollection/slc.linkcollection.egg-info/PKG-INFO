@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: slc.linkcollection
-Version: 0.1dev
+Version: 0.1dev-r84381
 Summary: A viewlet displaying links to subdocuments and quickly loading their content via kss
 Home-page: http://svn.plone.org/svn/plone/plone.example
 Author: Syslab.com GmbH
