@@ -1,1 +1,0 @@
-plone.formwidget.contenttree http://dev.plone.org/plone/browser/plone.formwidget.contenttree/trunk/
