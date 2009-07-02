@@ -66,7 +66,9 @@ class LinkBoxViewlet(common.ViewletBase):
         links = links or self.links()
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         for link in links:
-            docs.append(portal.restrictedTraverse(link['url'], None))
+            doc = portal.restrictedTraverse(link['url'], None)
+            if doc is not None:
+                docs.append()
         return docs
 
     def docbody(self, doc):

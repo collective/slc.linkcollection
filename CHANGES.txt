@@ -1,6 +1,11 @@
 osha.linkcollection Changelog
 =============================
 
+osha.linkcollection 1.2.1 (unreleased)
+--------------------------------------
+
+- Fixed problem where LC references a non existing doc but still appends it to the list (pilz)
+
 osha.linkcollection 1.2 (2009-06-19)
 ------------------------------------
 
