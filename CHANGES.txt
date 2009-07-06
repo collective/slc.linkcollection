@@ -1,6 +1,12 @@
 osha.linkcollection Changelog
 =============================
 
+
+osha.linkcollection 1.2.2 (2009-07-06)
+--------------------------------------
+
+- small fix for a bug with empty append
+
 osha.linkcollection 1.2.1 (2009-07-03)
 --------------------------------------
 
