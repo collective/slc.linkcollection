@@ -24,6 +24,7 @@
         </ul>
     </div>
     <div class="visualClear"></div>
+	<div id="linkcollection-prefetched-docs">
     <tal:loop repeat="doc python:view.docs(links)">
         <div class="prefetched-docs" 
             tal:define="number repeat/doc/number"
@@ -32,4 +33,5 @@
             <tal:x replace="structure python:view.docbody(doc)"/>
         </div>
     </tal:loop>
+	</div>
 </tal:global>

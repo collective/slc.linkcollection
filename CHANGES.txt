@@ -1,6 +1,10 @@
 osha.linkcollection Changelog
 =============================
 
+osha.linkcollection 1.2.3 (unreleased)
+--------------------------------------
+
+- added an id to the linkcollection prefetched docs so that they can be fetched by the linkscanner (pilz)
 
 osha.linkcollection 1.2.2 (2009-07-06)
 --------------------------------------
