@@ -1,6 +1,6 @@
 from zope.app.component.hooks import getSite
 
-from Products.ATContentTypes.interface.document import IATDocument
+from Products.ATContentTypes.interface import IATDocument, IATFolder
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -21,7 +21,7 @@ class LinkBoxViewlet(common.ViewletBase):
     
     def show(self):
         user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
-        if not IATDocument.providedBy(self.context):
+        if not IATDocument.providedBy(self.context) and not IATFolder.providedBy(self.context):
             return False
         if user.has_permission('Modify portal content', self.context):
             return True
@@ -34,13 +34,13 @@ class LinkBoxViewlet(common.ViewletBase):
         return 'linklist-item-%s' % idx
         
     def raw(self):
-        if not IATDocument.providedBy(self.context):
+        if not IATDocument.providedBy(self.context) and not IATFolder.providedBy(self.context):
             return []
         urls = ILinkList(self.context).urls
         return urls
         
     def links(self):
-        if not IATDocument.providedBy(self.context):
+        if not IATDocument.providedBy(self.context) and not IATFolder.providedBy(self.context):
             return []
         urls = ILinkList(self.context).urls
         if not urls:

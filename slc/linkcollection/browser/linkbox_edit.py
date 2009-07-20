@@ -13,7 +13,7 @@ from zope.formlib import form
 from zope.interface import Interface, implements
 from zope.interface.common import idatetime
 
-from Products.ATContentTypes.interface import IATDocument
+from Products.ATContentTypes.interface import IATDocument, IATFolder
 from Products.CMFCore.utils import getToolByName
 
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget, UberMultiSelectionWidget
@@ -22,9 +22,9 @@ from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from slc.linkcollection.interfaces import ILinkList
 from slc.linkcollection import LinkCollectionMessageFactory as _
 
-class LinkList(Persistent):
+
+class LinkListBase(Persistent):
     implements(ILinkList)
-    adapts(IATDocument)
 
     @property
     def portal_catalog(self):        
@@ -37,9 +37,17 @@ class LinkList(Persistent):
         return getToolByName(getSite(), 'portal_url')
         
     urls = []
+  
     
-linklist_adapter = factory(LinkList)
+class LinkList(LinkListBase):
+    adapts(IATDocument)
 
+linklist_adapter_document = factory(LinkList)
+
+class LinkListFolder(LinkListBase):
+    adapts(IATFolder)
+
+linklist_adapter_folder = factory(LinkListFolder)
 
 class LinkCollectionForm(form.PageEditForm):
     form_fields = form.Fields(ILinkList)

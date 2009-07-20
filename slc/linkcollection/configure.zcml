@@ -30,14 +30,20 @@
      </class>
 
     <adapter
-         factory=".browser.linkbox_edit.linklist_adapter"
+         factory=".browser.linkbox_edit.linklist_adapter_document"
          />
 
+    <adapter
+         factory=".browser.linkbox_edit.linklist_adapter_folder"
+         />
 
     <class class="Products.ATContentTypes.interface.IATDocument">
         <implements interface="zope.annotation.interfaces.IAnnotatable" />
     </class>
-    
+
+    <class class="Products.ATContentTypes.interface.IATFolder">
+        <implements interface="zope.annotation.interfaces.IAnnotatable" />
+    </class>    
 
     <browser:page
         for="*"

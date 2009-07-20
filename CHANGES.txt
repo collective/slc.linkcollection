@@ -1,6 +1,14 @@
 osha.linkcollection Changelog
 =============================
 
+osha.linkcollection 1.3.0b (unreleased)
+---------------------------------------
+
+- linkcollection can now also be used on ATFolders. For the Annotations-factory, I had to use a somewhat
+  awkward naming & inheritance construct, so as not to break existing linkcollection instances.
+  NB: linkcollection on a folder doesn't make much sense yet. We probably want to hide regular folder
+  contents if we show a linkcollection instead. (thomasw)
+
 osha.linkcollection 1.2.3 (2009-07-20)
 --------------------------------------
 
