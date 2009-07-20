@@ -34,6 +34,13 @@
         permission="zope2.View" 
         />
 
+    <browser:page
+        for="*"
+        name="linkcollection-view"
+        class=".linkcollection_view.LinkcollectionView"
+        permission="zope2.View"
+    />
+
 
 
 
