@@ -18,13 +18,14 @@ class LocalSearchableTextSourceBinder(SearchableTextSourceBinder):
     """ make the binder search in the local folder first """
 
     def __call__(self, context):
-        # commented out:
-        # if IATDocument.implementedBy(context.__class__)
-        # as context.__class__ is always slc.linkcollection.browser.linkbox_edit.LinkList (fuchs)
         portal_url = getToolByName(context, 'portal_url', None)
         site = getSite()
         if IPloneSiteRoot.providedBy(site):
-            current_path = '/'+'/'.join(portal_url.getRelativeContentPath(site.REQUEST.PARENTS[1]))
+            if ILinkListFolder.providedBy(context):
+                idx = 0
+            else:
+                idx = 1
+            current_path = '/'+'/'.join(portal_url.getRelativeContentPath(site.REQUEST.PARENTS[idx]))
             self.default_query = 'path:%s' % current_path
         else:
             self.default_query = 'path:'
@@ -46,3 +47,8 @@ u"""Search and select the documents you want to add to your linklist. The first 
                         )
             )
     
+class ILinkListDocument(Interface):
+    """ marker interface for Linklists on documents"""
+
+class ILinkListFolder(Interface):
+    """ marker interface for Linklists on folders"""

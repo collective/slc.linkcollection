@@ -19,7 +19,7 @@ from Products.CMFCore.utils import getToolByName
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget, UberMultiSelectionWidget
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 
-from slc.linkcollection.interfaces import ILinkList
+from slc.linkcollection.interfaces import ILinkList, ILinkListDocument, ILinkListFolder
 from slc.linkcollection import LinkCollectionMessageFactory as _
 
 
@@ -40,11 +40,13 @@ class LinkListBase(Persistent):
   
     
 class LinkList(LinkListBase):
+    implements(ILinkList, ILinkListDocument)
     adapts(IATDocument)
 
 linklist_adapter_document = factory(LinkList)
 
 class LinkListFolder(LinkListBase):
+    implements(ILinkList, ILinkListFolder)
     adapts(IATFolder)
 
 linklist_adapter_folder = factory(LinkListFolder)
