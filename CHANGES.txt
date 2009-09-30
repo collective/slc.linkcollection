@@ -1,11 +1,19 @@
 osha.linkcollection Changelog
 =============================
 
-1.3.1 (unreleased)
+1.3.2 (unreleased)
 ------------------
 
 - Nothing changed yet.
 
+1.3.1 (2009-09-30)
+------------------
+
+- Bug fix: the parent folder could be selected as a link even though it isn't a
+  document
+- Feature: scroll to the top of the linkbox when a document is displayed
+  without causing the page to jump up and down for longer and shorter
+  documents.
 
 1.3.0 (2009-09-29)
 ------------------

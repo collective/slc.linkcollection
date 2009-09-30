@@ -19,7 +19,7 @@
                     href string:${here/portal_url}/${link/url};
                     id link/url;
                     class python:'%s %s' % (view.name_item(link), number == 1 and 'current-linklist-item' or ''); 
-                    onclick python:'return render_doc(this, \'%s\')' % link['uid']"/>
+                    onclick python:'return LinkCollection.render_doc(this, \'%s\')' % link['uid']"/>
             </li>
         </ul>
     </div>
