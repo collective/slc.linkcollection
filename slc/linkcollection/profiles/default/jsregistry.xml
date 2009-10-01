@@ -6,5 +6,7 @@
                 enabled="True"
                 expression=""
                 id="++resource++linkcollection.js"
+		insert-after="jquery.js"
+		insert-before="fckeditor.js"
                 inline="False"/>
 </object>

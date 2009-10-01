@@ -26,9 +26,9 @@ LinkCollection.render_doc = function render_doc(node, uid) {
     doc.height(LinkCollection.maxheight);
 
     // Scroll to the top of the linkbox
-    linkbox=jq('div#slc-linkcollection-linkbox');
-    linkboxtop=linkbox.offset().top;
-    body=jq('html,body');
+    var linkbox=jq('div#slc-linkcollection-linkbox');
+    var linkboxtop=linkbox.offset().top;
+    var body=jq('html,body');
     body.scrollTop(linkboxtop);
     return false;
 }
