@@ -2,4 +2,4 @@
 - Cillian de Róiste (Syslab.com GmbH)
 - Jan Carel Brand (Syslab.com GmbH)
 - Patrick Gerken (Syslab.com GmbH)
-- Wolfgant Thomas (Syslab.com GmbH)
+- Wolfgang Thomas (Syslab.com GmbH)

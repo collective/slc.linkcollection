@@ -1,7 +1,7 @@
 slc.linkcollection Changelog
 ============================
 
-1.3.3 (unreleased)
+1.3.2 (2010-10-21)
 __________________
 
 - set a class denoting the currently selected item also on the <li>, not only
