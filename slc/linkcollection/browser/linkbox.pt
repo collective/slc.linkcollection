@@ -11,20 +11,24 @@
             </a>
 
         </div>
+
         <ul id="slc-linkcollection-list">
-            <li tal:repeat="link view/links" class="linkList">
-                <a tal:content="link/title" 
-                   tal:define="number repeat/link/number"
-                   tal:attributes="
-                    href string:${here/portal_url}/${link/url};
-                    id link/url;
-                    class python:'%s %s' % (view.name_item(link), number == 1 and 'current-linklist-item' or ''); 
-                    onclick python:'return LinkCollection.render_doc(this, \'%s\')' % link['uid']"/>
-            </li>
+            <span tal:repeat="link view/links" tal:omit-tag="">
+                <li class="linkList" 
+                    tal:define="number repeat/link/number"
+                    tal:attributes="class python:'linkList %s' % (number == 1 and 'current' or '')">
+                    <a tal:content="link/title" 
+                       tal:attributes="
+                        href string:${here/portal_url}/${link/url};
+                        id link/url;
+                        class python:'%s %s' % (view.name_item(link), number == 1 and 'current-linklist-item' or ''); 
+                        onclick python:'return LinkCollection.render_doc(this, \'%s\')' % link['uid']"/>
+                </li>
+            </span>
         </ul>
     </div>
     <div class="visualClear"></div>
-	<div id="linkcollection-prefetched-docs">
+    <div id="linkcollection-prefetched-docs">
     <tal:loop repeat="doc python:view.docs(links)">
         <div class="prefetched-docs" 
             tal:define="number repeat/doc/number"
@@ -33,5 +37,5 @@
             <tal:x replace="structure python:view.docbody(doc)"/>
         </div>
     </tal:loop>
-	</div>
+    </div>
 </tal:global>

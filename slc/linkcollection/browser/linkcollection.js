@@ -5,6 +5,8 @@ LinkCollection.maxheight = 0;
 LinkCollection.render_doc = function render_doc(node, uid) {
     jq('a.current-linklist-item').removeClass('current-linklist-item');
     jq(node).addClass('current-linklist-item');
+    jq('li.current').removeClass('current');
+    jq(node.parentNode).addClass('current');
 
     jq('div.prefetched-docs').each(
 	function(i){
