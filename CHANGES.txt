@@ -1,7 +1,7 @@
 slc.linkcollection Changelog
 ============================
 
-1.3.5 (unreleased)
+1.3.5 (2011-01-24)
 __________________
 
 - Added new styles to linkbox, provided by cornae. Reference: Syslab #1152
