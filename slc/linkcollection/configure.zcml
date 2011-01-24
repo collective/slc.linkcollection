@@ -28,6 +28,11 @@
         file="browser/linkcollection.js"
         />
 
+    <browser:resource 
+        name="linkarrow.png"
+        file="browser/arrow.png"
+        />
+
     <class class="Products.ATContentTypes.interface.IATDocument">
         <implements interface="zope.annotation.interfaces.IAnnotatable" />
     </class>
