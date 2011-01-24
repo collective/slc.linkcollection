@@ -3,3 +3,4 @@
 - Jan Carel Brand (Syslab.com GmbH)
 - Patrick Gerken (Syslab.com GmbH)
 - Wolfgang Thomas (Syslab.com GmbH)
+- Cornelis Kolbach (Cornae.org)

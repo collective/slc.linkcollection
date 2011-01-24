@@ -12,7 +12,7 @@
 
         </div>
 
-        <ul id="slc-linkcollection-list">
+        <ul id="slc-linkcollection-list" class="navigationBox">
             <span tal:repeat="link view/links" tal:omit-tag="">
                 <li class="linkList" 
                     tal:define="number repeat/link/number"
