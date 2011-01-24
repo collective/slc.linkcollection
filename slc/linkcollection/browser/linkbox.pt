@@ -1,4 +1,5 @@
 <tal:global define="links view/links">
+    <a name="linkcollectionContent"></a>
     <div id="slc-linkcollection-linkbox"
         tal:condition="view/show">
 
@@ -12,8 +13,8 @@
 
         </div>
 
-        <ul id="slc-linkcollection-list" class="navigationBox">
-            <span tal:repeat="link view/links" tal:omit-tag="">
+        <ul id="slc-linkcollection-list" class="navigationLinkBox">
+            <span tal:repeat="link links" tal:omit-tag="">
                 <li class="linkList" 
                     tal:define="number repeat/link/number"
                     tal:attributes="class python:'linkList %s' % (number == 1 and 'current' or '')">
@@ -37,5 +38,15 @@
             <tal:x replace="structure python:view.docbody(doc)"/>
         </div>
     </tal:loop>
+
+    <span class="linkToTopAnchor" tal:condition="python:len(links)"><a href="#" 
+        class="solitaryLink" tal:attributes="href string:${view/getLink}#linkcollectionContent"
+        i18n:translate="label_go_up">Go up</a>
+    </span>
+
     </div>
+    <div class="visualClear"></div>
+
+
+
 </tal:global>

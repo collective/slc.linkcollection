@@ -81,9 +81,9 @@ class LinkBoxViewlet(common.ViewletBase):
                   <div class="documentDescription">%s</div>%s
                 """ % (title, description, bodytext)
         return text
-        
-        
 
-
-        
-
+    def getLink(self):
+        context = self.context
+        link = context.request.get('ACTUAL_URL') + \
+            (context.request.get('QUERY_STRING') and '?' + context.request.get('QUERY_STRING') or '')
+        return link
