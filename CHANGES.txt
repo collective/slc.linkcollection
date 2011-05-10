@@ -4,8 +4,8 @@ slc.linkcollection Changelog
 1.3.6 (unreleased)
 __________________
 
-- Nothing changed yet.
-
+- New jquery-ui based link collection: simply assign class "linkcollection" to
+  a number of h2 tags. SEO improvement, refs #2830 [thomasw]
 
 1.3.5 (2011-01-24)
 __________________
