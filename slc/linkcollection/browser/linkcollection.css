@@ -49,10 +49,29 @@
     background: #e2e3e4 url(++resource++linkarrow.png) no-repeat right -123px;
 }
 
-#content .navigationLinkBox li.current a {
+#content .navigationLinkBox li.current a,
+#content .navigationLinkBox li.ui-tabs-selected a  {
     background: #4f79a1 url(++resource++linkarrow.png) no-repeat right -243px;
     color: white;
 }
+
+#content .ui-tabs .ui-tabs-panel {
+    display: block;
+    border-width: 0;
+    background: none;
+}
+#content .ui-tabs .ui-tabs-hide { 
+    display: none !important;
+}
+
+h2.linkcollection {
+    background: none repeat scroll 0 0 #C5CBD8;
+    margin-bottom: 1em;
+    margin-top: 0;
+    padding: 0.5em 1em !important;
+    border: none;
+}
+
 
 span.linkToTopAnchor{
     float: right;
