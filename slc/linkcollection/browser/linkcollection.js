@@ -43,16 +43,17 @@ LinkCollection.render_doc = function render_doc(node, uid) {
 
 jQuery(function() {
     var elems = jQuery("h2.linkcollection");
-    jQuery("h2.linkcollection").nextAll().andSelf().wrapAll('<div id="tabs" />')
+    jQuery("h2.linkcollection").nextAll().andSelf().wrapAll('<div id="tabs" />');
     jQuery("<ul id='slc-linkcollection-list' class='navigationLinkBox'></ul>").prependTo("#tabs");
     for (var i=0;i<elems.length;i++)
     {
         jQuery("#tabs ul#slc-linkcollection-list").append("<li><a href='#tabs-" + i + "'>" + elems[i].textContent + "</li>");
         jQuery(elems[i]).nextUntil("h2.linkcollection").andSelf().wrapAll("<div id='tabs-" + i + "' />");
     }
-    jQuery('#tabs').before('<a name="linkcollectionContent"></a>')
+    jQuery('#tabs').before('<a name="linkcollectionContent"></a>');
     var actual_url = jQuery('#actual-url').text();
-    jQuery('#tabs').after('<span class="linkToTopAnchor"><a href="' + actual_url + '#linkcollectionContent" class="solitaryLink" i18n:translate="label_go_up">Go up</a></span>')
-    jQuery("#tabs").tabs()
+    jQuery('#tabs').after('<div class="visualClear"></div>');
+    jQuery('#tabs').after('<span class="linkToTopAnchor"><a href="' + actual_url + '#linkcollectionContent" class="solitaryLink" i18n:translate="label_go_up">Go up</a></span>');
+    jQuery("#tabs").tabs();
     
 });
