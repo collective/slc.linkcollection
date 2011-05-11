@@ -55,5 +55,4 @@ jQuery(function() {
     jQuery('#tabs').after('<span class="linkToTopAnchor"><a href="' + actual_url + '#linkcollectionNavi" class="solitaryLink" i18n:translate="label_go_up">Go up</a></span>');
     jQuery('#tabs').after('<div class="visualClear"></div>');
     jQuery("#tabs").tabs();
-    
 });
