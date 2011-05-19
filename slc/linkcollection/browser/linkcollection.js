@@ -47,7 +47,7 @@ jQuery(function() {
     jQuery("<ul id='slc-linkcollection-list' class='navigationLinkBox'></ul>").prependTo("#tabs");
     for (var i=0;i<elems.length;i++)
     {
-        jQuery("#tabs ul#slc-linkcollection-list").append("<li><a href='#tabs-" + i + "'>" + elems[i].textContent + "</li>");
+        jQuery("#tabs ul#slc-linkcollection-list").append("<li><a href='#tabs-" + i + "' class='solitaryLink'>" + elems[i].textContent + "</li>");
         jQuery(elems[i]).nextUntil("h2.linkcollection").andSelf().wrapAll("<div id='tabs-" + i + "' />");
     }
     jQuery('#tabs').before('<a name="linkcollectionNavi"></a>');
@@ -56,3 +56,28 @@ jQuery(function() {
     jQuery('#tabs').after('<div class="visualClear"></div>');
     jQuery("#tabs").tabs();
 });
+
+var jump=function(e)
+{
+    //prevent the "normal" behaviour which would be a "hard" jump
+    e.preventDefault();
+    //Get the target
+    var target = jQuery("#tabs");
+    //perform animated scrolling
+    jQuery('html,body').animate(
+    {
+      //get top-position of target-element and set it as scroll target
+      scrollTop: jQuery(target).offset().top
+      //scrolldelay: 2 seconds
+    },500,function()
+    {
+     // do nothing more
+    });
+}
+
+jQuery(document).ready(function()
+{
+    jQuery('a[href*=#].solitaryLink').bind("click", jump);
+    return false;
+});
+
