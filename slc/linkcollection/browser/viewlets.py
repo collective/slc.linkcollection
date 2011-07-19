@@ -84,6 +84,6 @@ class LinkBoxViewlet(common.ViewletBase):
 
     def getLink(self):
         context = self.context
-        link = context.request.get('ACTUAL_URL') + \
-            (context.request.get('QUERY_STRING') and '?' + context.request.get('QUERY_STRING') or '')
+        link = context.REQUEST.get('ACTUAL_URL') + \
+            (context.REQUEST.get('QUERY_STRING') and '?' + context.REQUEST.get('QUERY_STRING') or '')
         return link
