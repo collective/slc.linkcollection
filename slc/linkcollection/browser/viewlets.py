@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from Products.CMFPlone.utils import safe_unicode
 from zope.app.component.hooks import getSite
 
 from Products.ATContentTypes.interface import IATDocument, IATFolder
@@ -74,9 +76,9 @@ class LinkBoxViewlet(common.ViewletBase):
     def docbody(self, doc):
         """ Return the document's contents as html
         """
-        title = unicode(doc.Title(), 'utf-8')
-        description = unicode(doc.Description(), 'utf-8')
-        bodytext = unicode(doc.getText(), 'utf-8')
+        title = safe_unicode(doc.Title(), 'utf-8')
+        description = safe_unicode(doc.Description(), 'utf-8')
+        bodytext = safe_unicode(doc.getText(), 'utf-8')
         text = """<h1 class="documentFirstHeading">%s</h1>
                   <div class="documentDescription">%s</div>%s
                 """ % (title, description, bodytext)
