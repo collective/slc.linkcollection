@@ -63,7 +63,8 @@ setup(name='slc.linkcollection',
       extras_require=dict(tests=tests_require),
       test_suite = 'slc.linkcollection.tests.test_docs.test_suite',
       entry_points="""
-      # -*- entry_points -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )
 
