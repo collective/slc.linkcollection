@@ -7,9 +7,17 @@ current page using kss. By default the viewlet is placed between description
 and body text of a document. It shows only if the current context does 
 reference some other documents. 
 
-    >>> self.loginAsPortalOwner()
-    >>> doc = self.portal.invokeFactory('Document', 'maindoc')
-    >>> maindoc = self.portal.maindoc
+Login into the portal:
+
+    >>> from plone.app.testing import setRoles, login, TEST_USER_ID, TEST_USER_NAME
+    >>> portal = layer['portal']
+    >>> setRoles(portal, TEST_USER_ID, ['Manager'])
+    >>> login(portal, TEST_USER_NAME)
+
+Create a document:
+
+    >>> doc = portal.invokeFactory('Document', 'maindoc')
+    >>> maindoc = portal.maindoc
     
 
 While logged in with Modify portal contents permissions, you will see a small 

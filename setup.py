@@ -30,8 +30,6 @@ long_description = (
     + '\n'
     )
 
-tests_require=['zope.testing']
-
 
 setup(name='slc.linkcollection',
       version=version,
@@ -56,15 +54,16 @@ setup(name='slc.linkcollection',
       zip_safe=False,
       install_requires=[
           'setuptools',
-	  'plone.browserlayer',
-	  
+          'plone.browserlayer',
       ],
-      tests_require=tests_require,
-      extras_require=dict(tests=tests_require),
-      test_suite = 'slc.linkcollection.tests.test_docs.test_suite',
+      extras_require={
+          'test': [
+              'plone.app.testing',
+              'mock',
+          ],
+      },
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
       """,
       )
-
