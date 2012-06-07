@@ -1,32 +1,31 @@
-from Acquisition import aq_inner
-
+from plone.app.vocabularies.catalog import SearchableTextSource, parse_query
+from plone.app.vocabularies.catalog import SearchableTextSourceBinder
+from Products.ATContentTypes.interface import IATDocument
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.ZCTextIndex.ParseTree import ParseError
 from zope import schema
 from zope.app.component.hooks import getSite
 from zope.interface import Interface
 
-from Products.ATContentTypes.interface import IATDocument
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from plone.app.vocabularies.catalog import SearchableTextSource, parse_query
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
-
 
 class ILinkCollectionLayer(Interface):
-    """A layer specific to LinkCollection
-    """
+    """A layer specific to LinkCollection"""
+
 
 class ILinkListDocument(Interface):
-    """ marker interface for Linklists on documents"""
+    """Marker interface for Linklists on documents"""
+
 
 class ILinkListFolder(Interface):
-    """ marker interface for Linklists on folders"""
+    """Marker interface for Linklists on folders"""
 
 
 class LocalSearchableTextSource(SearchableTextSource):
+    """Overriding the search method since it adds the current path to the
+    results even though it may be a Folder.
     """
-    Overriding the search method since it adds the current path to
-    the results even though it may be a Folder.
-    """
+
     def __init__(self, context, base_query={}, default_query=None):
         super(LocalSearchableTextSource,
               self).__init__(context,
@@ -61,9 +60,9 @@ class LocalSearchableTextSourceBinder(SearchableTextSourceBinder):
                 idx = 0
             else:
                 idx = 1
-            current_path = '/'+'/'.join(
+            current_path = '/' + '/'.join(
                 portal_url.getRelativeContentPath(site.REQUEST.PARENTS[idx])
-                )
+            )
             self.default_query = 'path:%s' % current_path
         else:
             self.default_query = 'path:'
@@ -73,8 +72,8 @@ class LocalSearchableTextSourceBinder(SearchableTextSourceBinder):
 
 class ILinkList(Interface):
     urls = schema.List(
-            title=u"Referenced Documents",
-            description=\
+        title=u"Referenced Documents",
+        description=\
 u"""Search and select the documents you want to add to your
 linklist. The first box contains your current selection. Below it you
 can do a fulltext search for documents. Below the search are the
@@ -84,7 +83,7 @@ the current folder.""",
             value_type=schema.Choice(
                         title=u"Add documents for referencing",
                         source=LocalSearchableTextSourceBinder(
-                {'object_provides':IATDocument.__identifier__}
-                                )
+                            {'object_provides': IATDocument.__identifier__}
                         )
             )
+    )
