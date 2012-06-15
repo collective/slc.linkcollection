@@ -47,7 +47,11 @@ jQuery(function() {
     jQuery("<ul id='slc-linkcollection-list' class='navigationLinkBox'></ul>").prependTo("#tabs");
     for (var i=0;i<elems.length;i++)
     {
-        jQuery("#tabs ul#slc-linkcollection-list").append("<li><a href='#tabs-" + i + "' class='linkcollectionAnchor'>" + elems[i].textContent + "</li>");
+        var listel = jQuery("<li>")[0];
+        var linkel = jQuery("<a href='#tabs-" + i + "' class='linkcollectionAnchor'></a>)")[0]; 
+        jQuery(linkel).append(jQuery(elems[i]).text());
+	jQuery(listel).append(linkel);
+        jQuery("#tabs ul#slc-linkcollection-list").append(listel);
         jQuery(elems[i]).nextUntil("h2.linkcollection").andSelf().wrapAll("<div id='tabs-" + i + "' />");
     }
     jQuery('#tabs').before('<a name="linkcollectionNavi"></a>');
