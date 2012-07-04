@@ -9,11 +9,11 @@ LinkCollection.render_doc = function render_doc(node, uid) {
     jq(node.parentNode).addClass('current');
 
     jq('div.prefetched-docs').each(
-	function(i){
-	    if (jq(this).is(':visible')) {
-		jq(this).hide();
-	    }
-	}
+    function(i){
+        if (jq(this).is(':visible')) {
+        jq(this).hide();
+        }
+    }
     );
 
     var doc = jq('div#doc-'+uid);
@@ -48,9 +48,9 @@ jQuery(function() {
     for (var i=0;i<elems.length;i++)
     {
         var listel = jQuery("<li>")[0];
-        var linkel = jQuery("<a href='#tabs-" + i + "' class='linkcollectionAnchor'></a>)")[0]; 
+        var linkel = jQuery("<a href='#tabs-" + i + "' class='linkcollectionAnchor'></a>)")[0];
         jQuery(linkel).append(jQuery(elems[i]).text());
-	jQuery(listel).append(linkel);
+        jQuery(listel).append(linkel);
         jQuery("#tabs ul#slc-linkcollection-list").append(listel);
         jQuery(elems[i]).nextUntil("h2.linkcollection").andSelf().wrapAll("<div id='tabs-" + i + "' />");
     }
