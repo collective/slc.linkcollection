@@ -52,13 +52,14 @@ jQuery(function() {
         jQuery(linkel).append(jQuery(elems[i]).text());
         jQuery(listel).append(linkel);
         jQuery("#tabs ul#slc-linkcollection-list").append(listel);
-        jQuery(elems[i]).nextUntil("h2.linkcollection").andSelf().wrapAll("<div id='tabs-" + i + "' />");
+        jQuery(elems[i]).nextUntil("h2.linkcollection").andSelf().wrapAll("<div class='paneContent' id='tabs-" + i + "' />");
     }
+    jQuery('#tabs div.paneContent').wrapAll("<div class='panes' />");
     jQuery('#tabs').before('<a name="linkcollectionNavi"></a>');
     var actual_url = jQuery('#actual-url').text();
     jQuery('#tabs').after('<span class="linkToTopAnchor"><a href="' + actual_url + '#linkcollectionNavi" class="solitaryLink linkcollectionAnchor" i18n:translate="label_go_up">Go up</a></span>');
     jQuery('#tabs').after('<div class="visualClear"></div>');
-    jQuery("#tabs").tabs();
+    jQuery("ul.navigationLinkBox").tabs('div.panes > div.paneContent');
 });
 
 var jump=function(e)
