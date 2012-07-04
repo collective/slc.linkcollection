@@ -50,6 +50,7 @@
 }
 
 #content .navigationLinkBox li.current a,
+#content .navigationLinkBox li a.current,
 #content .navigationLinkBox li.ui-tabs-selected a  {
     background: #4f79a1 url(++resource++linkarrow.png) no-repeat right -243px;
     color: white;
