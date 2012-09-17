@@ -1,6 +1,12 @@
 slc.linkcollection Changelog
 ============================
 
+1.4.2 (unreleased)
+__________________
+
+- Nothing changed yet.
+
+
 1.4.1 (2012-09-17)
 __________________
 
