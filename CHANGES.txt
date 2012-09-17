@@ -1,11 +1,10 @@
 slc.linkcollection Changelog
 ============================
 
-1.4.1 (unreleased)
+1.4.1 (2012-09-17)
 __________________
 
-- Nothing changed yet.
-
+- Plone 4
 
 1.4.0 (2011-11-29)
 __________________
