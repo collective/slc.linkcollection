@@ -1,7 +1,8 @@
+/* Old style link collection, using referenced documents and a viewlet */
+
 var LinkCollection = { };
 // Height of the tallest document which has been displayed
 LinkCollection.maxheight = 0;
-
 LinkCollection.render_doc = function render_doc(node, uid) {
     jq('a.current-linklist-item').removeClass('current-linklist-item');
     jq(node).addClass('current-linklist-item');
@@ -41,6 +42,7 @@ LinkCollection.render_doc = function render_doc(node, uid) {
     return false;
 }
 
+/* New style link collection, all content in one document, usinj jQuery */
 jQuery(function() {
     var elems = jQuery("h2.linkcollection");
     jQuery("h2.linkcollection").nextAll().andSelf().wrapAll('<div id="tabs" />');
