@@ -2,34 +2,34 @@ slc.linkcollection Changelog
 ============================
 
 1.4.2 (unreleased)
-__________________
+------------------
 
 - Nothing changed yet.
 
 
 1.4.1 (2012-09-17)
-__________________
+------------------
 
 - Plone 4
 
 1.4.0 (2011-11-29)
-__________________
+------------------
 
 - Minor changes for Plone4 compatibility [thomasw]
 
 1.3.7 (2011-05-19)
-__________________
+------------------
 
 - Added "slow" scrolling to anchors for jQuery based version [thomasw]
 
 1.3.6 (2011-05-18)
-__________________
+------------------
 
 - New jquery-ui based link collection: simply assign class "linkcollection" to
   a number of h2 tags. SEO improvement, refs #2830 [thomasw]
 
 1.3.5 (2011-01-24)
-__________________
+------------------
 
 - Added new styles to linkbox, provided by cornae. Reference: Syslab #1152
   [cornae, thomasw]
@@ -37,12 +37,12 @@ __________________
   [thomasw]
 
 1.3.4 (2010-11-23)
-__________________
+------------------
 
 - deactivated setting the div's height to maxheight #253 [thomasw]
 
 1.3.3 (2010-10-21)
-__________________
+------------------
 
 - set a class denoting the currently selected item also on the <li>, not only
   on the <a> tag [thomasw]
