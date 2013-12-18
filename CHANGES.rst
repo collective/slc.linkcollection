@@ -1,7 +1,7 @@
 slc.linkcollection Changelog
 ============================
 
-1.4.2 (unreleased)
+1.4.2 (2013-12-18)
 ------------------
 
 - Replace jQuery with jq to avoid conflicts [deroiste]
